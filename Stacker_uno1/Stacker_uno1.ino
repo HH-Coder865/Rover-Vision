@@ -4,14 +4,14 @@ int ena=11;
 int enb=5;
 int in1=10,in2=12,in3=7,in4=6;
 int trig=4,echo=3;
-double getDistance(){
+int getDistance(){
   digitalWrite(trig,LOW);
   delayMicroseconds(2);
   digitalWrite(trig,HIGH);
   delayMicroseconds(10);
   digitalWrite(trig,LOW);
   long time=pulseIn(echo,HIGH);
-  return (time*0.033/2);
+  return (int)(time*0.034/2);
 }
 void forward(){
   digitalWrite(in1,LOW);
@@ -53,30 +53,6 @@ void back(){
   analogWrite(ena,180);
   analogWrite(enb,180);
 }
-void move(double x){
-  double r,l;
-  if(x<20){
-    stop();
-    servo.write(180);
-    r=getDistance();
-    delay(1000);
-    servo.write(0);
-    l=getDistance();
-    delay(1000);
-    servo.write(90);
-    delay(800);
-    back();
-    delay(2000);
-    if(r>l){
-        right();
-        delay(2000);
-    }
-    else {
-      left();
-      delay(2000);
-    }
-  }
-}
 void setup(){
   pinMode(ena,OUTPUT);
   pinMode(enb,OUTPUT);
@@ -91,5 +67,36 @@ void setup(){
   servo.write(90);
 }
 void loop(){
-  
+  int d=getDistance(),r,l;
+  Serial.println(d);
+  delay(1000);
+  if(d>30){
+    forward();
+  }
+  else{
+    stop();
+    delay(500);
+    servo.write(160);
+    r=getDistance();
+    delay(600);
+    servo.write(30);
+    l=getDistance();
+    delay(600);
+    servo.write(90);
+    delay(200);
+    if(r>=l){
+      back();
+      delay(500);
+      right();
+      delay(900);
+      forward();
+    }
+    else{
+      back();
+      delay(500);
+      left();
+      delay(900);
+      forward();
+    }
+  }
 }
