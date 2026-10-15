@@ -1,0 +1,67 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Mokxi: Push to Mokxi",
+      "type": "shell",
+      "command": "npx --yes @mokxi/cli push",
+      "problemMatcher": []
+    },
+    {
+      "label": "Mokxi: Pull from Mokxi",
+      "type": "shell",
+      "command": "npx --yes @mokxi/cli pull",
+      "problemMatcher": []
+    },
+    {
+      "label": "Mokxi: Run in the simulator",
+      "type": "shell",
+      "command": "npx --yes @mokxi/cli run --seconds 5",
+      "problemMatcher": [],
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Mokxi: Open in the browser",
+      "type": "shell",
+      "command": "npx --yes @mokxi/cli open",
+      "problemMatcher": []
+    },
+    {
+      "label": "Arduino: Compile (uno1)",
+      "type": "shell",
+      "command": "arduino-cli compile --fqbn arduino:avr:uno --output-dir build/Stacker_uno1 Stacker_uno1",
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Mokxi: Upload the build to Mokxi (uno1)",
+      "type": "shell",
+      "command": "npx --yes @mokxi/cli upload --board uno1 --firmware build/Stacker_uno1/Stacker_uno1.ino.elf",
+      "dependsOn": "Arduino: Compile (uno1)",
+      "problemMatcher": []
+    },
+    {
+      "label": "Arduino: Upload to a real board (uno1)",
+      "type": "shell",
+      "command": "arduino-cli upload --fqbn arduino:avr:uno --input-dir build/Stacker_uno1 --port ${input:port} Stacker_uno1",
+      "dependsOn": "Arduino: Compile (uno1)",
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "id": "port",
+      "type": "promptString",
+      "description": "Serial port of the board (arduino-cli board list shows them)",
+      "default": "/dev/ttyUSB0"
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+# Mokxi CLI sync state, and arduino-cli builds
+.mokxi/
+build/

@@ -1,0 +1,520 @@
+{
+  "version": 1,
+  "name": "Stacker",
+  "parts": [
+    {
+      "id": "uno1",
+      "type": "uno",
+      "props": {},
+      "x": 280,
+      "y": -60,
+      "rot": 0
+    },
+    {
+      "id": "dcmotor1",
+      "type": "dcmotor",
+      "props": {
+        "voltage": 9,
+        "rpm": 2000,
+        "resistance": 6,
+        "inertia": 100,
+        "back_emf": 0
+      },
+      "x": 460,
+      "y": -460,
+      "rot": 270
+    },
+    {
+      "id": "dcmotor2",
+      "type": "dcmotor",
+      "props": {
+        "voltage": 9,
+        "rpm": 2000,
+        "resistance": 6,
+        "inertia": 100,
+        "back_emf": 0
+      },
+      "x": 720,
+      "y": -440,
+      "rot": 270
+    },
+    {
+      "id": "hcsr041",
+      "type": "hcsr04",
+      "props": {
+        "temperature": 20
+      },
+      "x": 880,
+      "y": -440,
+      "rot": 0
+    },
+    {
+      "id": "l298n1",
+      "type": "l298n",
+      "props": {
+        "regulator": true,
+        "ena_jumper": false,
+        "enb_jumper": false
+      },
+      "x": 540,
+      "y": -320,
+      "rot": 0
+    },
+    {
+      "id": "bb1",
+      "type": "breadboard-half",
+      "props": {},
+      "x": 860,
+      "y": -40,
+      "rot": 0
+    },
+    {
+      "id": "servo1",
+      "type": "servo",
+      "props": {
+        "min_pulse": 544,
+        "max_pulse": 2400,
+        "range": 180,
+        "speed": 600,
+        "mode": "positional",
+        "rpm": 110,
+        "neutral": 1500,
+        "dead_band": 35
+      },
+      "x": 1060,
+      "y": -300,
+      "rot": 0
+    },
+    {
+      "id": "battery1",
+      "type": "battery",
+      "props": {
+        "kind": "9v",
+        "charge": 100
+      },
+      "x": 600,
+      "y": -520,
+      "rot": 0
+    }
+  ],
+  "wires": [
+    {
+      "id": "w9",
+      "from": "dcmotor1:2",
+      "to": "l298n1:OUT1",
+      "color": "#7a8290",
+      "bends": [
+        {
+          "x": 560,
+          "y": -240
+        }
+      ]
+    },
+    {
+      "id": "w10",
+      "from": "dcmotor1:1",
+      "to": "l298n1:OUT2",
+      "color": "#e14b4b",
+      "bends": [
+        {
+          "x": 520,
+          "y": -200
+        }
+      ]
+    },
+    {
+      "id": "w1",
+      "from": "uno1:5V",
+      "to": "bb1:tp1",
+      "color": "#7a8290",
+      "bends": [
+        {
+          "x": 440,
+          "y": 540
+        },
+        {
+          "x": 900,
+          "y": 540
+        }
+      ]
+    },
+    {
+      "id": "w2",
+      "from": "uno1:GNDc",
+      "to": "bb1:tn2",
+      "color": "#e14b4b",
+      "bends": [
+        {
+          "x": 480,
+          "y": 580
+        },
+        {
+          "x": 920,
+          "y": 580
+        }
+      ]
+    },
+    {
+      "id": "w5",
+      "from": "l298n1:ENA",
+      "to": "uno1:11",
+      "color": "#e8a33d",
+      "bends": [
+        {
+          "x": 660,
+          "y": -40
+        },
+        {
+          "x": 500,
+          "y": -40
+        }
+      ]
+    },
+    {
+      "id": "w6",
+      "from": "l298n1:IN1",
+      "to": "uno1:10",
+      "color": "#8a5cf5",
+      "bends": [
+        {
+          "x": 680,
+          "y": -40
+        },
+        {
+          "x": 520,
+          "y": -40
+        }
+      ]
+    },
+    {
+      "id": "w7",
+      "from": "l298n1:IN2",
+      "to": "uno1:12",
+      "color": "#20b2c6",
+      "bends": [
+        {
+          "x": 700,
+          "y": 0
+        },
+        {
+          "x": 480,
+          "y": 0
+        }
+      ]
+    },
+    {
+      "id": "w8",
+      "from": "l298n1:IN3",
+      "to": "uno1:7",
+      "color": "#d94f9c",
+      "bends": [
+        {
+          "x": 720,
+          "y": 40
+        },
+        {
+          "x": 600,
+          "y": 40
+        }
+      ]
+    },
+    {
+      "id": "w16",
+      "from": "l298n1:IN4",
+      "to": "uno1:6",
+      "color": "#7a8290",
+      "bends": [
+        {
+          "x": 740,
+          "y": 80
+        },
+        {
+          "x": 620,
+          "y": 80
+        }
+      ]
+    },
+    {
+      "id": "w17",
+      "from": "l298n1:ENB",
+      "to": "uno1:5",
+      "color": "#e14b4b",
+      "bends": [
+        {
+          "x": 760,
+          "y": 120
+        },
+        {
+          "x": 640,
+          "y": 120
+        }
+      ]
+    },
+    {
+      "id": "w13",
+      "from": "hcsr041:VCC",
+      "to": "bb1:tp2",
+      "color": "#d94f9c",
+      "bends": [
+        {
+          "x": 940,
+          "y": -140
+        },
+        {
+          "x": 920,
+          "y": -140
+        }
+      ]
+    },
+    {
+      "id": "w14",
+      "from": "hcsr041:GND",
+      "to": "bb1:tn10",
+      "color": "#7a8290",
+      "bends": [
+        {
+          "x": 1000,
+          "y": -140
+        },
+        {
+          "x": 1100,
+          "y": -140
+        }
+      ]
+    },
+    {
+      "id": "w15",
+      "from": "hcsr041:TRIG",
+      "to": "uno1:4",
+      "color": "#1f9d55",
+      "bends": [
+        {
+          "x": 960,
+          "y": -100
+        },
+        {
+          "x": 660,
+          "y": -100
+        }
+      ]
+    },
+    {
+      "id": "w18",
+      "from": "hcsr041:ECHO",
+      "to": "uno1:3",
+      "color": "#2f6fed",
+      "bends": [
+        {
+          "x": 980,
+          "y": -60
+        },
+        {
+          "x": 680,
+          "y": -60
+        }
+      ]
+    },
+    {
+      "id": "w19",
+      "from": "bb1:tp25",
+      "to": "bb1:bp25",
+      "color": "#1f9d55",
+      "bends": [
+        {
+          "x": 1460,
+          "y": 140
+        }
+      ]
+    },
+    {
+      "id": "w20",
+      "from": "bb1:tn24",
+      "to": "bb1:bn24",
+      "color": "#e8a33d",
+      "bends": [
+        {
+          "x": 1440,
+          "y": 160
+        }
+      ]
+    },
+    {
+      "id": "w21",
+      "from": "servo1:PWM",
+      "to": "uno1:A1",
+      "color": "#8a5cf5",
+      "bends": [
+        {
+          "x": 100,
+          "y": -240
+        },
+        {
+          "x": 100,
+          "y": 420
+        },
+        {
+          "x": 560,
+          "y": 420
+        }
+      ]
+    },
+    {
+      "id": "w22",
+      "from": "servo1:GND",
+      "to": "bb1:bn14",
+      "color": "#20b2c6",
+      "bends": [
+        {
+          "x": 1020,
+          "y": -200
+        },
+        {
+          "x": 1020,
+          "y": 380
+        },
+        {
+          "x": 1200,
+          "y": 380
+        }
+      ]
+    },
+    {
+      "id": "w23",
+      "from": "servo1:VCC",
+      "to": "bb1:bp19",
+      "color": "#d94f9c",
+      "bends": [
+        {
+          "x": 860,
+          "y": -220
+        },
+        {
+          "x": 860,
+          "y": 440
+        },
+        {
+          "x": 1320,
+          "y": 440
+        }
+      ]
+    },
+    {
+      "id": "w11",
+      "from": "battery1:V+",
+      "to": "l298n1:12V",
+      "color": "#20b2c6",
+      "bends": [
+        {
+          "x": 640,
+          "y": -340
+        },
+        {
+          "x": 580,
+          "y": -340
+        }
+      ]
+    },
+    {
+      "id": "w12",
+      "from": "battery1:V-",
+      "to": "l298n1:GND",
+      "color": "#d94f9c",
+      "bends": [
+        {
+          "x": 680,
+          "y": -220
+        },
+        {
+          "x": 600,
+          "y": -220
+        }
+      ]
+    },
+    {
+      "id": "w24",
+      "from": "l298n1:5V",
+      "to": "uno1:VIN",
+      "color": "#e14b4b",
+      "bends": [
+        {
+          "x": 620,
+          "y": 160
+        },
+        {
+          "x": 500,
+          "y": 160
+        }
+      ]
+    },
+    {
+      "id": "w25",
+      "from": "uno1:GNDb",
+      "to": "l298n1:GND",
+      "color": "#e8a33d",
+      "bends": [
+        {
+          "x": 460,
+          "y": 460
+        },
+        {
+          "x": 600,
+          "y": 460
+        }
+      ]
+    },
+    {
+      "id": "w3",
+      "from": "dcmotor2:2",
+      "to": "l298n1:OUT4",
+      "color": "#7a8290",
+      "bends": [
+        {
+          "x": 820,
+          "y": -220
+        },
+        {
+          "x": 940,
+          "y": -220
+        },
+        {
+          "x": 940,
+          "y": -200
+        }
+      ]
+    },
+    {
+      "id": "w4",
+      "from": "l298n1:OUT3",
+      "to": "dcmotor2:1",
+      "color": "#e14b4b",
+      "bends": [
+        {
+          "x": 900,
+          "y": -240
+        },
+        {
+          "x": 900,
+          "y": -260
+        },
+        {
+          "x": 780,
+          "y": -260
+        }
+      ]
+    }
+  ],
+  "projects": {
+    "*": {
+      "files": {
+        "sketch.ino": ""
+      },
+      "main": "sketch.ino"
+    },
+    "uno1": {
+      "files": {
+        "sketch.ino": "#include<Servo.h>\nServo servo;\nint ena=11;\nint enb=5;\nint in1=10,in2=12,in3=7,in4=6;\nint trig=4,echo=3;\ndouble getDistance(){\n  digitalWrite(trig,LOW);\n  delayMicroseconds(2);\n  digitalWrite(trig,HIGH);\n  delayMicroseconds(10);\n  digitalWrite(trig,LOW);\n  long time=pulseIn(echo,HIGH);\n  return (time*0.033/2);\n}\nvoid forward(){\n  digitalWrite(in1,LOW);\n  digitalWrite(in2,HIGH);\n  digitalWrite(in4,LOW);\n  digitalWrite(in3,HIGH);\n  analogWrite(ena,180);\n  analogWrite(enb,180);\n}\nvoid stop(){\n  digitalWrite(in1,0);\n  digitalWrite(in2,LOW);\n  digitalWrite(in3,0);\n  digitalWrite(in4,LOW);\n  analogWrite(ena,0);\n  analogWrite(enb,0);\n}\nvoid left(){\n  digitalWrite(in1,HIGH);\n  digitalWrite(in2,LOW);\n  digitalWrite(in4,LOW);\n  digitalWrite(in3,HIGH);\n  analogWrite(ena,180);\n  analogWrite(enb,180);\n}\nvoid right(){\n  digitalWrite(in1,LOW);\n  digitalWrite(in2,HIGH);\n  digitalWrite(in4,HIGH);\n  digitalWrite(in3,LOW);\n  analogWrite(ena,180);\n  analogWrite(enb,180);\n}\nvoid back(){\n  digitalWrite(in1,HIGH);\n  digitalWrite(in2,LOW);\n  digitalWrite(in3,LOW);\n  digitalWrite(in4,HIGH);\n  analogWrite(ena,180);\n  analogWrite(enb,180);\n}\nvoid move(double x){\n  double r,l;\n  if(x<20){\n    stop();\n    servo.write(180);\n    r=getDistance();\n    delay(1000);\n    servo.write(0);\n    l=getDistance();\n    delay(1000);\n    servo.write(90);\n    delay(800);\n    back();\n    delay(2000);\n    if(r>l){\n        right();\n        delay(2000);\n    }\n    else {\n      left();\n      delay(2000);\n    }\n  }\n}\nvoid setup(){\n  pinMode(ena,OUTPUT);\n  pinMode(enb,OUTPUT);\n  pinMode(in1,OUTPUT);\n  pinMode(in2,OUTPUT);\n  pinMode(in3,OUTPUT);\n  pinMode(in4,OUTPUT);\n  pinMode(echo,INPUT);\n  pinMode(trig,OUTPUT);\n  Serial.begin(9600);\n  servo.attach(A1);\n  servo.write(90);\n}\nvoid loop(){\n  \n}\n"
+      },
+      "main": "sketch.ino"
+    }
+  }
+}
