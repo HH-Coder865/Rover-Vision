@@ -1,4 +1,4 @@
-# 🤖 Obstacle Avoiding Rover
+# 🤖 Rover-Vision: An Obstacle Avoiding Rover
 
 An Arduino-based obstacle avoiding rover that detects obstacles using an ultrasonic sensor and automatically changes direction to avoid collisions.
 
@@ -47,3 +47,7 @@ This project demonstrates the basics of embedded systems, robotics, sensor integ
 
    ```bash
    git clone https://github.com/HH-Coder865/Obstacle-Avoiding-Rover.git
+
+## Author
+
+[HH-Coder865](https://www.github.com/HH-Coder865)
