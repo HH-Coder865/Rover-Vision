@@ -1,35 +1,49 @@
-# Stacker
+# 🤖 Obstacle Avoiding Rover
 
-[![Open in Mokxi](https://mokxi.com/badge/open-in-mokxi.svg)](https://mokxi.com/p/jxN25QyvqUOE8qc-)
+An Arduino-based obstacle avoiding rover that detects obstacles using an ultrasonic sensor and automatically changes direction to avoid collisions.
 
-A circuit and its code, made in [Mokxi](https://mokxi.com), the electronics simulator that runs in your browser.
+This project demonstrates the basics of embedded systems, robotics, sensor integration, and motor control using Arduino.
 
-## What is in here
+## 🚀 Features
 
-- `Stacker_uno1/`: the sketch for `uno1`, ready for the Arduino IDE (open `Stacker_uno1/Stacker_uno1.ino`).
-- `Stacker_sketch/`: the sketch, ready for the Arduino IDE (open `Stacker_sketch/Stacker_sketch.ino`).
-- `diagram.mokxi.json`: the whole Mokxi project (parts, wires and code). Mokxi opens it as it is.
-- `.vscode/`: settings, tasks and the recommended extension for VS Code.
+- 📡 Obstacle detection using an ultrasonic sensor (HC-SR04).
+- 🚗 Automatic movement and obstacle avoidance.
+- ↩️ Direction control using a motor driver.
+- ⚙️ DC motor control for forward, backward, left, and right movements.
+- 🔄 Servo motor support for scanning surroundings.
+- 💻 Developed using Arduino IDE.
 
-## Open it in Mokxi
+## 🛠️ Components Required
 
-Press the badge above, or in the Mokxi editor choose **Export > Open from GitHub** and pick this repository.
+| Component | Purpose |
+|---|---|
+| Arduino Uno | Main controller |
+| HC-SR04 Ultrasonic Sensor | Measures distance to obstacles |
+| L298N Motor Driver | Controls the DC motors |
+| DC Geared Motors | Drive the rover |
+| Servo Motor | Rotates the sensor to scan directions |
+| Rover Chassis | Supports the components |
+| Battery | Powers the rover |
+| Jumper Wires | Electrical connections |
 
-## Work on it in VS Code
+## 🔌 Working Principle
 
-1. Open this folder in VS Code. It suggests the **Mokxi** extension; install it.
-2. Run **Mokxi: Sign In** from the Command Palette (Ctrl+Shift+P, or Cmd+Shift+P on a Mac).
-3. Edit the sketch, then run **Mokxi: Sync** to send it to Mokxi, or **Mokxi: Open in Mokxi** to see it run.
+1. The ultrasonic sensor measures the distance between the rover and an obstacle.
+2. The Arduino processes the measured distance.
+3. If the path is clear, the rover moves forward.
+4. If an obstacle is detected within the predefined distance, the rover stops.
+5. The rover can move backward and change direction to find a clear path.
+6. The servo motor can be used to scan different directions before choosing a path.
 
-The tasks in `.vscode/tasks.json` (Terminal > Run Task) do the same from the terminal, and can compile with `arduino-cli` when you have it.
+## 💻 Software Requirements
 
-## From a terminal
+- Arduino IDE
+- Arduino Uno board support
+- Servo library (`Servo.h`)
 
-```sh
-npx @mokxi/cli login            # once
-npx @mokxi/cli pull PROJECT_ID .  # get the latest from Mokxi (the id is in the project link)
-npx @mokxi/cli push         # send your edits to Mokxi
-npx @mokxi/cli run          # simulate it and print the serial output
-```
+## ⚡ Getting Started
 
-Docs: https://mokxi.com/docs/editor/github-and-vs-code
+1. Clone this repository:
+
+   ```bash
+   git clone https://github.com/HH-Coder865/Obstacle-Avoiding-Rover.git
